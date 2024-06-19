@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import fr.steve.helloworld.LoginActivity;
+import fr.steve.entityfactory.Manifest;
+import fr.steve.entityfactory.SharedPreferenceActivity;
 
 public abstract class Repository<T extends Entity> {
 
@@ -25,7 +26,7 @@ public abstract class Repository<T extends Entity> {
     public List<T> findAll() {
         List<T> entities = new ArrayList<>();
         Class<T> clazz = getEntityClass();
-        Map<String, ?> allEntries = LoginActivity.getAll();
+        Map<String, ?> allEntries = SharedPreferenceActivity.getAll();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
             if (entry.getKey().startsWith(clazz.getName())) {
                 String json = (String) entry.getValue();
@@ -60,13 +61,13 @@ public abstract class Repository<T extends Entity> {
     private void persist(T entity) {
         String key = entity.getClass().getName() + "_" + entity.getId();
         String json = gson.toJson(entity);
-        LoginActivity.edit().putString(key, json).apply();
+        SharedPreferenceActivity.edit().putString(key, json).apply();
     }
 
     @SuppressWarnings("unchecked")
     public T findOneById(int id) {
         String key = Entity.class.getName() + "_" + id;
-        String json = LoginActivity.getString(key, null);
+        String json = SharedPreferenceActivity.getString(key, null);
         if (json != null) {
             return gson.fromJson(json, (Class<T>) Entity.class);
         }

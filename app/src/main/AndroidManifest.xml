@@ -12,5 +12,4 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EntityFactory"
         tools:targetApi="31" />
-
 </manifest>
