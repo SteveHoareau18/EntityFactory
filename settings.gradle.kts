@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "EntityFactory"
 include(":app")
- 
+include(":app:entityfactory")

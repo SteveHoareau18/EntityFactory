@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import fr.steve.entityfactory.Manifest;
 import fr.steve.entityfactory.SharedPreferenceActivity;
 
 public abstract class Repository<T extends Entity> {

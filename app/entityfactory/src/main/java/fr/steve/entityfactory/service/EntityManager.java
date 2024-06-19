@@ -22,9 +22,9 @@ public abstract class EntityManager {
     @SuppressWarnings("unchecked")
     public <T extends Entity, R extends Repository<T>> Optional<R> getRepository(Class<T> clazz) {
         if (clazz == Person.class) {
-            return Optional.of((R) personRepository);
+            return Optional.of(personRepository);
         } else if (clazz == Address.class) {
-            return Optional.of((R) addressRepository);
+            return Optional.of(addressRepository);
         }
         return Optional.empty();
     }
